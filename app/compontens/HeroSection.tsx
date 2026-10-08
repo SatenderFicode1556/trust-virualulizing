@@ -4,15 +4,15 @@ import { metrics } from "./homeData";
 
 export default function HeroSection() {
   return (
-    <section className="mx-auto grid max-w-7xl gap-8 px-4 py-7 sm:px-5 sm:py-10 lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
+    <section className="mx-auto grid max-w-[1440px] gap-10 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:px-12 lg:py-20">
       <div className="flex flex-col justify-center">
-        <p className="mb-3 w-fit rounded-full bg-white px-3 py-1 text-xs font-medium text-black/65 shadow-sm sm:mb-4 sm:text-sm">
+        <p className="mb-3 w-fit rounded-full border border-[#dce8e0] bg-white px-4 py-2 text-xs font-semibold text-[#315c4c] shadow-sm sm:mb-5 sm:text-sm">
           Trusted services at your doorstep
         </p>
-        <h1 className="max-w-3xl text-[2.65rem] font-semibold leading-[1.04] tracking-normal sm:text-5xl md:text-7xl">
+        <h1 className="max-w-3xl text-[2.65rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-5xl md:text-[4.5rem]">
           Home servicing made simple, trusted, and on time.
         </h1>
-        <p className="mt-5 max-w-2xl text-base leading-7 text-black/68 sm:mt-6 sm:text-lg sm:leading-8">
+        <p className="mt-5 max-w-2xl text-base leading-7 text-[#555e58] sm:mt-6 sm:text-lg sm:leading-8">
           We majorly provide AC service and repair, home deep cleaning, plumbing
           support, and salon-at-home care with clear prices, verified
           professionals, and convenient booking slots.
@@ -35,9 +35,9 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative min-h-[360px] overflow-hidden rounded-lg bg-[#d8e6e0] shadow-2xl shadow-black/10 sm:min-h-[460px] lg:min-h-[520px]">
+      <div className="relative min-h-[360px] overflow-hidden rounded-[1.75rem] bg-[#d8e6e0] shadow-2xl shadow-[#18372b]/15 sm:min-h-[460px] lg:min-h-[520px]">
         <div className="absolute inset-0 grid grid-cols-2 gap-2 p-2 sm:gap-3 sm:p-3">
-          <div className="relative overflow-hidden rounded-md">
+          <div className="relative overflow-hidden rounded-2xl">
             <Image
               src="/services/ac-repair-photo.png"
               alt="AC repair home service"
@@ -47,7 +47,7 @@ export default function HeroSection() {
               priority
             />
           </div>
-          <div className="relative overflow-hidden rounded-md">
+          <div className="relative overflow-hidden rounded-2xl">
             <Image
               src="/services/deep-cleaning-photo.png"
               alt="Deep cleaning home service"
@@ -57,7 +57,7 @@ export default function HeroSection() {
               priority
             />
           </div>
-          <div className="relative overflow-hidden rounded-md">
+          <div className="relative overflow-hidden rounded-2xl">
             <Image
               src="/services/electrician-photo.png"
               alt="Electrician home service"
@@ -66,7 +66,7 @@ export default function HeroSection() {
               className="object-cover"
             />
           </div>
-          <div className="relative overflow-hidden rounded-md">
+          <div className="relative overflow-hidden rounded-2xl">
             <Image
               src="/services/home-painter-photo.png"
               alt="Home painter service"

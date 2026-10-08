@@ -2,14 +2,14 @@ import { trustedPartners } from "./homeData";
 
 export default function TrustedPartnersSection() {
   return (
-    <section id="partners" className="bg-[#202622] py-14 text-white">
-      <div className="mx-auto max-w-7xl px-5">
+    <section id="partners" className="bg-[#133d32] py-16 text-white sm:py-20">
+      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#b9e7d1]">
               Trust network
             </p>
-            <h2 className="mt-2 max-w-2xl text-3xl font-semibold md:text-4xl">
+            <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight md:text-5xl">
               A service company backed by verified people and reliable systems.
             </h2>
           </div>

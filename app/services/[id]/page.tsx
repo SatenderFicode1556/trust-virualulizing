@@ -3,8 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Button from "../../compontens/Button";
+import BookingPopup from "../../compontens/BookingPopup";
 import Footer from "../../compontens/Footer";
 import Header from "../../compontens/Header";
+import HighlightsSection from "../../compontens/HighlightsSection";
+import PageCtaSection from "../../compontens/PageCtaSection";
 import { getServiceById, services } from "../../compontens/homeData";
 
 type ServiceCategory = (typeof services)[number]["subcategories"][number];
@@ -53,31 +56,63 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
     <main className="min-h-screen bg-[#f7f4ef] text-[#181818]">
       <Header />
 
-      <section id="service-types" className="mx-auto max-w-7xl px-5 py-12">
-        <div>
-          <Link
-            href="/#services"
-            className="text-sm font-semibold text-black/58 hover:text-black"
-          >
-            Back to services
-          </Link>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
-            Service types
-          </p>
-          <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-            Choose the exact {service.name} work.
-          </h2>
-          <p className="mt-4 max-w-2xl text-black/62">
-            Select one option to see details, starter price, duration, and book
-            that exact service type.
-          </p>
+      <section className="relative overflow-hidden bg-[#edf3ef]">
+        <div className="pointer-events-none absolute -right-24 -top-36 size-[30rem] rounded-full bg-[#d6e9dd] blur-3xl" />
+        <div className="relative mx-auto grid max-w-[1440px] items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_430px] lg:gap-16 lg:px-12 lg:py-20">
+          <div>
+            <Link href="/#services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#315c4c] transition hover:text-[#133d32]">
+              <span aria-hidden="true">←</span> All services
+            </Link>
+            <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">{service.category}</p>
+            <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.04em] sm:text-5xl md:text-6xl">{service.name}, done right.</h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-[#555e58]">{service.description} Choose the option that fits your home and see clear pricing before you book.</p>
+            <div className="mt-7 flex flex-wrap gap-2.5 text-sm font-medium text-[#315c4c]">
+              {["Verified professionals", "Upfront pricing", service.eta].map((item) => <span key={item} className="rounded-full border border-[#c9d9d0] bg-white/75 px-4 py-2">{item}</span>)}
+            </div>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <span className="text-sm text-[#657069]">Customer rating</span>
+              <span className="rounded-full bg-white px-4 py-2 text-sm font-bold text-[#176b50] shadow-sm">{service.rating} <span className="text-amber-500">★</span></span>
+              <span className="text-sm text-[#657069]">{service.subcategories.length} options to choose from</span>
+            </div>
+          </div>
+
+          <aside className="overflow-hidden rounded-[1.75rem] border border-white bg-white p-2.5 shadow-[0_24px_60px_rgba(19,61,50,.16)]">
+            <div className="relative aspect-[1.5] overflow-hidden rounded-[1.25rem]">
+              <Image src={service.image} alt={`${service.name} professional at work`} fill priority sizes="(min-width: 1024px) 430px, 100vw" className="object-cover" />
+              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3.5 py-2 text-xs font-semibold text-[#133d32] shadow-sm">{service.badge}</span>
+            </div>
+            <div className="p-4 sm:p-5">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#768079]">Starting from</p>
+                  <p className="mt-1 text-3xl font-semibold tracking-tight">Rs. {service.price}</p>
+                </div>
+                <p className="pb-1 text-sm text-[#68716b]">{service.duration}</p>
+              </div>
+              <BookingPopup
+                initialServiceId={service.id}
+                initialCategoryId={service.subcategories[0].id}
+                triggerLabel={`Book ${service.name}`}
+                triggerClassName="mt-5 block w-full rounded-full bg-[#133d32] py-3.5 shadow-none hover:bg-[#0d3027]"
+              />
+              <p className="mt-3 text-center text-xs leading-5 text-[#7b837d]">Final cost is confirmed with you before any additional work begins.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="service-types" className="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <div className="max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">Choose a service type</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Find the right {service.name.toLowerCase()} service.</h2>
+          <p className="mt-3 text-[#555e58]">Compare what’s included, estimated time and starting price before booking.</p>
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {service.subcategories.map((item) => (
             <article
               key={item.id}
-              className="overflow-hidden rounded-lg border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
+              className="overflow-hidden rounded-2xl border border-[#e8e7e2] bg-white shadow-[0_3px_12px_rgba(20,38,31,.05)] transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
             >
               <div className="relative aspect-[4/3] bg-[#f7f4ef]">
                 <Image
@@ -88,7 +123,7 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
                   className="object-cover"
                 />
               </div>
-              <div className="p-5">
+              <div className="p-5 sm:p-6">
                 <h3 className="text-xl font-semibold">{item.name}</h3>
                 <p className="mt-3 min-h-[4.5rem] text-sm leading-6 text-black/62">
                   {item.description}
@@ -105,7 +140,7 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
                 </div>
                 <Button
                   href={`/services/${service.id}/${item.id}`}
-                  className="mt-5 block w-full py-2 text-center"
+                  className="mt-5 block w-full rounded-full bg-[#133d32] py-3 text-center shadow-none transition hover:bg-[#0d3027]"
                 >
                   Book this
                 </Button>
@@ -114,6 +149,18 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
           ))}
         </div>
       </section>
+
+      <HighlightsSection
+        eyebrow={`${service.name} booking guide`}
+        title={`Choose the ${service.name.toLowerCase()} option that fits.`}
+        description="Compare the service details and estimated time, then share your preferred visit slot. The team can help if you are unsure which option to select."
+        items={[
+          { title: "Compare service types", detail: `Explore ${service.subcategories.length} options for ${service.name.toLowerCase()} and review what each one covers.`, tag: "Find your fit" },
+          { title: "Review price and duration", detail: "Each option shows a starting price and estimated duration before you book.", tag: "Plan ahead" },
+          { title: "Arrange a convenient visit", detail: `${service.eta}. Call the team if you need help with timing or service selection.`, tag: "Easy scheduling" },
+        ]}
+        tone="white"
+      />
 
       <section className="bg-white py-14">
         <div className="mx-auto max-w-7xl px-5">
@@ -158,6 +205,16 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
           </div>
         </div>
       </section>
+
+      <PageCtaSection
+        eyebrow="Book with confidence"
+        title={`Ready to book ${service.name.toLowerCase()}?`}
+        description="Choose the service type that matches your need and check the details before sending a booking request."
+        actionLabel="Choose a service type"
+        actionHref="#service-types"
+        secondaryLabel="Call for help"
+        secondaryHref="tel:+911234567890"
+      />
 
       <Footer />
     </main>

@@ -4,6 +4,8 @@ import Link from "next/link";
 import BookingPopup from "../compontens/BookingPopup";
 import Footer from "../compontens/Footer";
 import Header from "../compontens/Header";
+import HighlightsSection from "../compontens/HighlightsSection";
+import PageCtaSection from "../compontens/PageCtaSection";
 
 export const metadata: Metadata = {
   title: "About TrustonServices | Company and Team",
@@ -54,10 +56,10 @@ export default function AboutPage() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1fr_420px] lg:items-center lg:py-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">
               About TrustonServices
             </p>
-            <h1 className="mt-3 max-w-4xl text-5xl font-semibold leading-[1.04] md:text-7xl">
+            <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-[1.04] tracking-tight sm:text-5xl md:text-6xl">
               A home service company built around trust and quick support.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-black/62">
@@ -76,7 +78,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-lg bg-[#202622] shadow-xl shadow-black/10">
+          <div className="overflow-hidden rounded-3xl bg-[#202622] shadow-xl shadow-black/10">
             <div className="relative aspect-[4/3]">
               <Image
                 src="/services/ac-repair-photo.png"
@@ -128,6 +130,18 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+
+      <HighlightsSection
+        eyebrow="Our service standards"
+        title="A dependable experience starts with good information."
+        description="We want customers to understand the service, expected timing, and next steps before a visit is confirmed."
+        items={[
+          { title: "Clear service scope", detail: "Service options describe the work so customers can choose the right starting point.", tag: "Before booking" },
+          { title: "Careful coordination", detail: "Requests are reviewed against the selected service, location, and preferred time.", tag: "During booking" },
+          { title: "Follow-up support", detail: "Customers can contact the team for questions and help after the visit.", tag: "After service" },
+        ]}
+        tone="white"
+      />
 
       <section className="bg-white py-14">
         <div className="mx-auto grid max-w-7xl gap-6 px-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
@@ -325,6 +339,16 @@ export default function AboutPage() {
           </form>
         </div>
       </section>
+
+      <PageCtaSection
+        eyebrow="We are here to help"
+        title="Let’s find the right service for your property."
+        description="Tell our team what you need, or browse the service catalog and choose an option that fits."
+        actionLabel="Browse services"
+        actionHref="/#services"
+        secondaryLabel="Contact the team"
+        secondaryHref="tel:+911234567890"
+      />
 
       <Footer />
     </main>

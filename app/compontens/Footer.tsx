@@ -4,7 +4,7 @@ const platformLinks = [
   ["About", "/about"],
   ["Career", "/jobs"],
   ["Services", "/#services"],
-  ["Booking", "/#booking"],
+  ["Booking", "/#services"],
   ["Industries", "/#industries"],
   ["Reviews", "/#testimonials"],
 ];
@@ -19,7 +19,7 @@ const serviceLinks = [
 const supportLinks = [
   ["Call Now", "tel:+911234567890"],
   ["Email Support", "mailto:support@trustonservices.com"],
-  ["FAQs", "/#faqs"],
+  ["FAQs", "/#faq"],
 ];
 
 const socialLinks = [
@@ -110,10 +110,10 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-9 px-5 py-12 lg:grid-cols-[1.35fr_0.7fr_0.7fr_0.8fr]">
         <div>
           <Link href="/" className="flex items-center gap-3 font-semibold">
-            <span className="grid size-10 place-items-center rounded-md bg-black text-white">
+            <span className="grid size-10 place-items-center rounded-xl bg-[#133d32] text-white">
               TS
             </span>
-            TrustonServices
+            Truston<span className="text-[#168365]">Services</span>
           </Link>
           <p className="mt-4 max-w-md text-sm leading-6 text-black/60">
             Reliable home services with booking, team assignment, and field

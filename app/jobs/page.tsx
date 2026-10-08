@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Footer from "../compontens/Footer";
 import Header from "../compontens/Header";
+import HighlightsSection from "../compontens/HighlightsSection";
+import PageCtaSection from "../compontens/PageCtaSection";
 
 export const metadata: Metadata = {
   title: "Apply for Jobs | TrustonServices",
@@ -55,10 +57,10 @@ export default function JobsPage() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1fr_420px] lg:items-center lg:py-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">
               Careers
             </p>
-            <h1 className="mt-3 max-w-4xl text-5xl font-semibold leading-[1.04] md:text-7xl">
+            <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-[1.04] tracking-tight sm:text-5xl md:text-6xl">
               Apply for service jobs at TrustonServices.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-black/62">
@@ -73,7 +75,7 @@ export default function JobsPage() {
             </a>
           </div>
 
-          <div className="overflow-hidden rounded-lg bg-[#202622] shadow-xl shadow-black/10">
+          <div className="overflow-hidden rounded-3xl bg-[#202622] shadow-xl shadow-black/10">
             <div className="relative aspect-[4/3]">
               <Image
                 src="/services/electrician-photo.png"
@@ -157,6 +159,27 @@ export default function JobsPage() {
           </div>
         </div>
       </section>
+
+      <HighlightsSection
+        eyebrow="Working with us"
+        title="Good service depends on a team that works well together."
+        description="Our field and support roles coordinate each booking, from understanding the request to helping the customer after a visit."
+        items={[
+          { title: "Know the job before you go", detail: "Service details and checklists help teams prepare for customer visits.", tag: "Clear expectations" },
+          { title: "Work with coordinated support", detail: "Operations and customer support help keep assignments and follow-ups moving.", tag: "Teamwork" },
+          { title: "Build practical experience", detail: "Work across home services and develop customer-facing and technical skills.", tag: "Career growth" },
+        ]}
+      />
+
+      <PageCtaSection
+        eyebrow="Join the team"
+        title="Interested in one of our open roles?"
+        description="Share your experience and the kind of work you are looking for. Our team will review your application."
+        actionLabel="View application form"
+        actionHref="/jobs#apply"
+        secondaryLabel="Call hiring support"
+        secondaryHref="tel:+911234567890"
+      />
 
       <section id="apply" className="mx-auto grid max-w-7xl gap-8 px-5 py-14 lg:grid-cols-[0.8fr_1.2fr]">
         <div>

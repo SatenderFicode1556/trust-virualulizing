@@ -3,14 +3,14 @@ import { industriesWeServe } from "./homeData";
 
 export default function IndustriesSection() {
   return (
-    <section id="industries" className="bg-white py-14 text-[#181818]">
-      <div className="mx-auto max-w-7xl px-5">
+    <section id="industries" className="bg-[#fbfaf7] py-16 text-[#181818] sm:py-20">
+      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">
               Industries we serve
             </p>
-            <h2 className="mt-2 max-w-2xl text-3xl font-semibold md:text-4xl">
+            <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight md:text-5xl">
               Service support for homes, businesses, and managed properties.
             </h2>
           </div>
@@ -32,7 +32,7 @@ export default function IndustriesSection() {
           {industriesWeServe.map((industry) => (
             <article
               key={industry.name}
-              className="overflow-hidden rounded-lg border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
+              className="overflow-hidden rounded-2xl border border-[#e8e7e2] bg-white shadow-[0_3px_12px_rgba(20,38,31,.05)] transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
             >
               <div className="relative aspect-[5/3] bg-[#f7f4ef]">
                 <Image

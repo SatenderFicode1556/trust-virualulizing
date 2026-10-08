@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import BookingPopup from "../../../compontens/BookingPopup";
 import Footer from "../../../compontens/Footer";
 import Header from "../../../compontens/Header";
+import HighlightsSection from "../../../compontens/HighlightsSection";
+import PageCtaSection from "../../../compontens/PageCtaSection";
 import {
   getServiceCategory,
   services,
@@ -61,41 +63,24 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
   );
 
   return (
-    <main className="min-h-screen bg-[#f7f4ef] text-[#181818]">
+    <main className="min-h-screen bg-[#fbfaf7] text-[#181818]">
       <Header />
 
-      <section className={`bg-gradient-to-br ${service.accent}`}>
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1fr_390px] lg:py-16">
+      <section className="relative overflow-hidden bg-[#edf3ef]">
+        <div className="pointer-events-none absolute -right-24 -top-36 size-[30rem] rounded-full bg-[#d6e9dd] blur-3xl" />
+        <div className="relative mx-auto grid max-w-[1440px] gap-9 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_410px] lg:items-center lg:px-12 lg:py-16">
           <div>
             <Link
               href={`/services/${service.id}`}
-              className="text-sm font-semibold text-black/58 hover:text-black"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#315c4c] transition hover:text-[#133d32]"
             >
-              Back to {service.name}
+              <span aria-hidden="true">←</span> {service.name}
             </Link>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="grid size-14 place-items-center rounded-lg bg-white shadow-sm">
-                <Image
-                  src={service.icon}
-                  alt={`${service.name} icon`}
-                  width={44}
-                  height={44}
-                  className="h-11 w-11"
-                />
-              </span>
-              <span
-                className={`rounded-md px-3 py-2 text-sm font-semibold ${service.tone}`}
-              >
-                {service.name}
-              </span>
-              <span className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white">
-                Starts at Rs. {category.price}
-              </span>
-            </div>
-            <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-[1.04] md:text-7xl">
+            <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">{service.category}</p>
+            <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.04em] sm:text-5xl md:text-6xl">
               {category.name}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/65">
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-[#555e58]">
               {category.description}
             </p>
 
@@ -105,16 +90,16 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
                 ["Duration", category.duration],
                 ["Rating", service.rating],
               ].map(([label, value]) => (
-                <div key={label} className="rounded-md bg-white/82 p-4 shadow-sm">
-                  <p className="text-sm text-black/50">{label}</p>
+                <div key={label} className="rounded-xl border border-white bg-white/80 p-4 shadow-sm">
+                  <p className="text-sm text-[#737c75]">{label}</p>
                   <p className="mt-2 font-semibold">{value}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <aside className="h-fit overflow-hidden rounded-lg bg-white shadow-xl shadow-black/10">
-            <div className="relative aspect-[4/3]">
+          <aside className="h-fit overflow-hidden rounded-[1.75rem] border border-white bg-white p-2.5 shadow-[0_24px_60px_rgba(19,61,50,.16)]">
+            <div className="relative aspect-[1.5] overflow-hidden rounded-[1.25rem]">
               <Image
                 src={getCategoryImage(category, service.image)}
                 alt={`${category.name} photo`}
@@ -124,11 +109,11 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
                 priority
               />
             </div>
-            <div className="p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
+            <div className="p-4 sm:p-5">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#168365]">
                 Book this service
               </p>
-              <div className="mt-5 rounded-md bg-[#f7f4ef] p-4">
+              <div className="mt-4 rounded-xl bg-[#f2f5f1] p-4">
                 <p className="text-sm text-black/55">Selected category</p>
                 <p className="mt-1 text-xl font-semibold">{category.name}</p>
                 <p className="mt-3 text-sm text-black/60">{service.eta}</p>
@@ -136,7 +121,7 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
               <div className="mt-5 space-y-3 text-sm text-black/65">
                 <p className="flex justify-between gap-4">
                   <span>Starter price</span>
-                  <span className="font-semibold text-black">
+                <span className="font-semibold text-black">
                     Rs. {category.price}
                   </span>
                 </p>
@@ -154,12 +139,12 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
               <BookingPopup
                 initialCategoryId={category.id}
                 initialServiceId={service.id}
-                triggerClassName="mt-6 block w-full text-center"
+                triggerClassName="mt-6 block w-full rounded-full bg-[#133d32] py-3.5 text-center shadow-none hover:bg-[#0d3027]"
                 triggerLabel={`Book ${category.name}`}
               />
               <a
                 href="tel:+911234567890"
-                className="mt-3 block rounded-md border border-black/15 px-4 py-3 text-center text-sm font-semibold"
+                className="mt-3 block rounded-full border border-[#d8dfd9] px-4 py-3 text-center text-sm font-semibold text-[#315c4c] transition hover:bg-[#f2f5f1]"
               >
                 Call to book
               </a>
@@ -216,6 +201,29 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
           </article>
         </div>
       </section>
+
+      <HighlightsSection
+        eyebrow="Before your visit"
+        title={`What to expect from ${category.name.toLowerCase()}.`}
+        description="Review the scope and timing, and ask about any additional work before it starts."
+        items={[
+          { title: "Understand the service", detail: category.description, tag: service.name },
+          { title: "Plan for the visit", detail: `Estimated duration: ${category.duration}. The team will confirm visit details with you.`, tag: "Timing" },
+          { title: "Confirm extra work first", detail: "If the professional finds work outside the listed scope, the additional cost is discussed before proceeding.", tag: "Price clarity" },
+        ]}
+        tone="white"
+      />
+
+      <PageCtaSection
+        eyebrow="Take the next step"
+        title={`Book ${category.name.toLowerCase()} at a time that works.`}
+        description={`Starting at Rs. ${category.price} · Estimated time ${category.duration}. Submit a request and the team will help confirm the visit.`}
+        actionLabel="Book this service"
+        actionHref={`/services/${service.id}`}
+        booking={{ serviceId: service.id, categoryId: category.id }}
+        secondaryLabel="Call to book"
+        secondaryHref="tel:+911234567890"
+      />
 
       <Footer />
     </main>
