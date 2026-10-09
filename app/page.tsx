@@ -7,6 +7,7 @@ import HighlightsSection from "./compontens/HighlightsSection";
 import IndustriesSection from "./compontens/IndustriesSection";
 import PageCtaSection from "./compontens/PageCtaSection";
 import ServicesSection from "./compontens/ServicesSection";
+import ServiceLocationsSection from "./compontens/ServiceLocationsSection";
 import TestimonialsSection from "./compontens/TestimonialsSection";
 import TrustedPartnersSection from "./compontens/TrustedPartnersSection";
 
@@ -30,7 +31,6 @@ export default function Home() {
       />
       <TrustedPartnersSection />
       <TestimonialsSection />
-      <AccordionSection />
       <PageCtaSection
         eyebrow="Ready when you are"
         title="Find the right service for your home."
@@ -40,6 +40,8 @@ export default function Home() {
         secondaryLabel="Call our team"
         secondaryHref="tel:+911234567890"
       />
+      <ServiceLocationsSection />
+      <AccordionSection />
       <Footer />
     </main>
   );

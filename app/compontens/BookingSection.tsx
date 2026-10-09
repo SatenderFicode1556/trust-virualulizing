@@ -4,24 +4,24 @@ export default function BookingSection() {
   return (
     <section
       id="booking"
-      className="mx-auto grid max-w-7xl gap-6 px-5 py-14 lg:grid-cols-[0.78fr_1.22fr]"
+      className="mx-auto grid max-w-7xl gap-6 px-5 py-6 sm:py-8 lg:grid-cols-[0.78fr_1.22fr]"
     >
       <div>
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
           Booking process
         </p>
         <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-          Book a verified professional in four clean steps.
+          Request a home service in a few simple steps.
         </h2>
         <p className="mt-4 text-black/62">
-          Start from a service, choose the exact work type, select a time slot,
-          and track the assigned professional until the job is complete.
+          Choose a service, tell us what you need, pick a preferred time, and
+          review your details before sending a request.
         </p>
         <div className="mt-6 rounded-lg bg-black p-5 text-white">
-          <p className="text-sm text-white/55">Average booking time</p>
-          <p className="mt-2 text-4xl font-semibold">Under 60 sec</p>
+          <p className="text-sm text-white/55">Before you send a request</p>
+          <p className="mt-2 text-2xl font-semibold">Know the starting price</p>
           <p className="mt-3 text-sm leading-6 text-white/62">
-            Clear pricing, visible slots, and no unnecessary form steps.
+            Compare listed service options, starting prices, and estimated visit times.
           </p>
         </div>
       </div>
@@ -38,10 +38,10 @@ export default function BookingSection() {
               <p className="mt-5 font-semibold">{step}</p>
               <p className="mt-2 text-sm leading-5 text-black/55">
                 {[
-                  "Browse trusted service categories.",
-                  "Pick Split AC, Window AC, cleaning type, or repair type.",
-                  "Select date, time, and address.",
-                  "Get assignment, ETA, and status updates.",
+                  "Browse the available service categories.",
+                  "Choose the type of work you need.",
+                  "Share your preferred time and service area.",
+                  "Review your details before confirming.",
                 ][index]}
               </p>
             </div>

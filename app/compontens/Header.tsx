@@ -6,7 +6,6 @@ const navLinks = [
   ["About", "/about"],
   ["Services", "/#services"],
   ["Industries", "/#industries"],
-  ["Jobs", "/jobs"],
   ["Call", "tel:+911234567890"],
 ];
 

@@ -10,17 +10,12 @@ import PageCtaSection from "../../../compontens/PageCtaSection";
 import {
   getServiceCategory,
   services,
+  SITE_IMAGE,
 } from "../../../compontens/homeData";
-
-type ServiceCategory = (typeof services)[number]["subcategories"][number];
 
 type CategoryPageProps = {
   params: Promise<{ id: string; categoryId: string }>;
 };
-
-function getCategoryImage(category: ServiceCategory, fallbackImage: string) {
-  return (category as ServiceCategory & { image?: string }).image ?? fallbackImage;
-}
 
 export function generateStaticParams() {
   return services.flatMap((service) =>
@@ -68,7 +63,7 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
 
       <section className="relative overflow-hidden bg-[#edf3ef]">
         <div className="pointer-events-none absolute -right-24 -top-36 size-[30rem] rounded-full bg-[#d6e9dd] blur-3xl" />
-        <div className="relative mx-auto grid max-w-[1440px] gap-9 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_410px] lg:items-center lg:px-12 lg:py-16">
+        <div className="relative mx-auto grid max-w-[1440px] gap-9 px-5 py-6 sm:px-8 sm:py-8 lg:grid-cols-[1fr_410px] lg:items-center lg:px-12 lg:py-10">
           <div>
             <Link
               href={`/services/${service.id}`}
@@ -88,7 +83,7 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
               {[
                 ["Service type", service.category],
                 ["Duration", category.duration],
-                ["Rating", service.rating],
+                ["Starting price", `Rs. ${category.price}`],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-xl border border-white bg-white/80 p-4 shadow-sm">
                   <p className="text-sm text-[#737c75]">{label}</p>
@@ -101,8 +96,8 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
           <aside className="h-fit overflow-hidden rounded-[1.75rem] border border-white bg-white p-2.5 shadow-[0_24px_60px_rgba(19,61,50,.16)]">
             <div className="relative aspect-[1.5] overflow-hidden rounded-[1.25rem]">
               <Image
-                src={getCategoryImage(category, service.image)}
-                alt={`${category.name} photo`}
+                src={SITE_IMAGE}
+                alt=""
                 fill
                 sizes="390px"
                 className="object-cover"
@@ -116,7 +111,7 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
               <div className="mt-4 rounded-xl bg-[#f2f5f1] p-4">
                 <p className="text-sm text-black/55">Selected category</p>
                 <p className="mt-1 text-xl font-semibold">{category.name}</p>
-                <p className="mt-3 text-sm text-black/60">{service.eta}</p>
+                <p className="mt-3 text-sm text-black/60">Choose your preferred time. The team will confirm availability.</p>
               </div>
               <div className="mt-5 space-y-3 text-sm text-black/65">
                 <p className="flex justify-between gap-4">
@@ -153,7 +148,7 @@ export default async function ServiceCategoryPage({ params }: CategoryPageProps)
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-5 py-14 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="mx-auto grid max-w-7xl gap-6 px-5 py-6 sm:py-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
             Details

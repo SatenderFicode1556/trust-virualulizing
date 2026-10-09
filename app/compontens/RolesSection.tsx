@@ -3,7 +3,7 @@ import { roleCards } from "./homeData";
 
 export default function RolesSection() {
   return (
-    <section id="roles" className="bg-[#202622] py-14 text-white">
+    <section id="roles" className="bg-[#202622] py-6 text-white sm:py-8">
       <div className="mx-auto max-w-7xl px-5">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>

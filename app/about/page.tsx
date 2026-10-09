@@ -1,115 +1,122 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import BookingPopup from "../compontens/BookingPopup";
 import Footer from "../compontens/Footer";
 import Header from "../compontens/Header";
 import HighlightsSection from "../compontens/HighlightsSection";
+import AboutServiceGuide from "../compontens/AboutServiceGuide";
 import PageCtaSection from "../compontens/PageCtaSection";
+import UiIcon from "../compontens/UiIcon";
+import { SITE_IMAGE } from "../compontens/homeData";
 
 export const metadata: Metadata = {
   title: "About TrustonServices | Company and Team",
   description:
-    "Learn about TrustonServices, our owner, verified service professionals, operating process, and customer-first home service standards.",
+    "Learn about TrustonServices, the home services we offer, how booking works, and how to contact our team.",
 };
-
-const companyStats = [
-  ["12k+", "monthly service bookings"],
-  ["42", "active city zones"],
-  ["4.8", "average customer rating"],
-  ["7 days", "customer support"],
-];
 
 const teamMembers = [
   {
-    role: "Operations Manager",
-    name: "Rohit Sharma",
+    role: "Booking coordination",
+    icon: "clock" as const,
     detail:
-      "Coordinates daily bookings, team capacity, professional assignment, and visit timing.",
+      "Helps organize service requests, preferred times, and customer follow-up.",
   },
   {
-    role: "Service Quality Lead",
-    name: "Priya Mehta",
+    role: "Service information",
+    icon: "check" as const,
     detail:
-      "Reviews job checklists, customer feedback, safety standards, and service completion quality.",
+      "Keeps service descriptions, starting prices, and work expectations clear.",
   },
   {
-    role: "Customer Support Lead",
-    name: "Aman Verma",
+    role: "Customer support",
+    icon: "phone" as const,
     detail:
-      "Helps customers choose the right service type, resolve issues, and manage follow-up support.",
+      "Helps customers choose a service and find answers before they book.",
   },
 ];
 
-const workStandards = [
-  "Verified professionals for each service category",
-  "Clear starter pricing before booking",
-  "Manual assignment review for the right professional",
-  "Customer support before and after service",
+const companyDetails: { title: string; detail: string; icon: "home" | "clock" | "map-pin" | "check" }[] = [
+  { title: "What we do", detail: "Home and property services with clear booking, assignment, and support workflows.", icon: "home" },
+  { title: "How we work", detail: "We use your selected service, location, and preferred time to understand your request.", icon: "clock" },
+  { title: "Where we help", detail: "Residential societies, corporate offices, hotels, restaurants, stores, and individual homes.", icon: "map-pin" },
+  { title: "Customer promise", detail: "Starting prices are visible, and extra work is discussed before it begins.", icon: "check" },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#f7f4ef] text-[#181818]">
+    <main className="min-h-screen bg-[#fbfaf7] text-[#181818]">
       <Header />
 
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1fr_420px] lg:items-center lg:py-16">
+      <section className="overflow-hidden bg-[#f7f8f4]">
+        <div className="mx-auto grid max-w-[1440px] items-center gap-8 px-5 py-6 sm:px-8 sm:py-8 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14 lg:px-12 lg:py-10">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">
-              About TrustonServices
+            <p className="inline-flex items-center gap-2 rounded-full border border-[#dce8df] bg-white px-3.5 py-2 text-sm font-medium text-[#31584a] shadow-sm">
+              <span className="grid size-6 place-items-center rounded-full bg-[#e8f3ed] text-[#168365]"><UiIcon name="sparkle" className="size-3.5" /></span>
+              A more straightforward way to book
             </p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-[1.04] tracking-tight sm:text-5xl md:text-6xl">
-              A home service company built around trust and quick support.
+            <h1 className="mt-5 max-w-[720px] text-[clamp(2.6rem,5vw,4.6rem)] font-semibold leading-[1] tracking-[-0.05em] text-[#17211c]">
+              Home services with <span className="text-[#168365]">clear choices</span> from the start.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/62">
-              TrustonServices helps customers book verified professionals for AC
-              repair, cleaning, plumbing, electrical work, appliance care, salon
-              services, and property maintenance.
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[#59645d] sm:text-lg sm:leading-8">
+              TrustonServices brings home and property services together in one
+              place. Compare service options, review starting prices, and get
+              help choosing what fits your needs.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <BookingPopup triggerLabel="Book a Service" />
-              <Link
-                href="/#services"
-                className="rounded-md border border-black/15 px-5 py-3 text-sm font-semibold"
-              >
-                View Services
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/#services" className="inline-flex items-center rounded-full bg-[#133d32] px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(19,61,50,.16)] transition hover:-translate-y-0.5 hover:bg-[#0d3027]">
+                Explore services <UiIcon name="arrow-right" className="ml-2 size-4" />
               </Link>
+              <a href="tel:+911234567890" className="inline-flex items-center rounded-full border border-[#d8dfd9] bg-white px-5 py-3 text-sm font-semibold text-[#20382e] transition hover:bg-[#f4f8f5]">
+                <UiIcon name="phone" className="mr-2 size-4" />Call our team
+              </a>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#e1e7e1] pt-4 text-sm font-medium text-[#45584e]">
+              {["Service details", "Starting prices", "Human support"].map((item) => (
+                <span key={item} className="inline-flex items-center gap-2"><UiIcon name="check" className="size-4 text-[#168365]" />{item}</span>
+              ))}
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-3xl bg-[#202622] shadow-xl shadow-black/10">
-            <div className="relative aspect-[4/3]">
+          <div className="relative mx-auto w-full max-w-[650px] lg:max-w-none">
+            <div className="absolute -inset-3 rounded-[2rem] bg-[#dceae1] sm:-inset-4" />
+            <div className="relative overflow-hidden rounded-[1.6rem] bg-[#d9e4dc] shadow-[0_24px_60px_rgba(25,50,39,.16)]">
+            <div className="relative aspect-[4/3] sm:aspect-[5/4]">
               <Image
-                src="/services/ac-repair-photo.png"
+                src={SITE_IMAGE}
                 alt="TrustonServices professional at work"
                 fill
-                sizes="420px"
+                sizes="(max-width: 1024px) 100vw, 48vw"
                 className="object-cover"
                 priority
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#10251e]/75 via-transparent to-transparent" />
+              <div className="absolute right-4 top-4 flex items-center gap-2 rounded-full border border-white/70 bg-white/95 px-3.5 py-2 text-xs font-semibold text-[#31584a] shadow-lg backdrop-blur sm:right-5 sm:top-5 sm:text-sm">
+                <UiIcon name="check" className="size-4 text-[#168365]" />
+                Clear options before booking
+              </div>
+              <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/70 bg-white/95 p-4 shadow-lg backdrop-blur sm:inset-x-5 sm:bottom-5 sm:p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#168365]">Home services, all in one place</p>
+                <p className="mt-1 text-lg font-semibold text-[#17211c]">Choose the work that fits your home.</p>
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 p-4">
-              {companyStats.map(([value, label]) => (
-                <div key={label} className="rounded-md bg-white/10 p-4 text-white">
-                  <p className="text-2xl font-semibold">{value}</p>
-                  <p className="mt-1 text-sm text-white/58">{label}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-5 py-14 lg:grid-cols-[0.78fr_1.22fr]">
+      <AboutServiceGuide />
+
+      <section className="bg-[#fbfaf7] py-6 sm:py-8">
+        <div className="mx-auto grid max-w-[1440px] gap-6 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:px-12">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">
             Company details
           </p>
-          <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#17211c] md:text-4xl">
             Organized service delivery from booking to completion.
           </h2>
-          <p className="mt-4 text-black/62">
+          <p className="mt-4 leading-7 text-[#59615b]">
             Our process is designed for homes, offices, hotels, restaurants,
             retail stores, and managed properties that need dependable service
             teams.
@@ -117,17 +124,14 @@ export default function AboutPage() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {[
-            ["What we do", "Home and property services with clear booking, assignment, and support workflows."],
-            ["How we work", "Each request is matched with the right service type, time slot, location, and available professional."],
-            ["Where we help", "Residential societies, corporate offices, hotels, restaurants, stores, and individual homes."],
-            ["Customer promise", "Transparent starting prices, verified teams, and support if the service needs follow-up."],
-          ].map(([title, detail]) => (
-            <article key={title} className="rounded-lg bg-white p-5 shadow-sm">
-              <h3 className="text-xl font-semibold">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-black/62">{detail}</p>
+          {companyDetails.map(({ title, detail, icon }) => (
+            <article key={title} className="rounded-2xl border border-[#e3e8e2] bg-white p-5 shadow-[0_3px_14px_rgba(20,38,31,.04)]">
+              <span className="grid size-10 place-items-center rounded-xl bg-[#e8f3ed] text-[#176b50]"><UiIcon name={icon} className="size-5" /></span>
+              <h3 className="mt-4 text-lg font-semibold text-[#17211c]">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#626a64]">{detail}</p>
             </article>
           ))}
+        </div>
         </div>
       </section>
 
@@ -143,116 +147,63 @@ export default function AboutPage() {
         tone="white"
       />
 
-      <section className="bg-white py-14">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
-              Owner details
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-              Led by a customer-first service operator.
-            </h2>
-          </div>
-
-          <article className="rounded-lg border border-black/10 bg-[#f7f4ef] p-5">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div className="grid size-20 shrink-0 place-items-center rounded-lg bg-black text-2xl font-semibold text-white">
-                TS
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-black/45">
-                  Founder & Owner
-                </p>
-                <h3 className="mt-1 text-2xl font-semibold">TrustonServices Team</h3>
-                <p className="mt-2 text-sm leading-6 text-black/62">
-                  Focused on building a reliable home service platform with
-                  verified professionals, simple booking, and accountable field
-                  operations.
-                </p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 py-14">
+      <section className="bg-[#fbfaf7] py-6 sm:py-8">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
-              Employee details
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">
+              How we support your request
             </p>
-            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-              Teams that keep every booking moving.
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#17211c] md:text-4xl">
+              Clear roles behind a smoother service experience.
             </h2>
           </div>
-          <p className="max-w-xl text-black/60">
-            Every role supports a smoother customer experience, from confirming
-            requirements to assigning professionals and reviewing service quality.
+          <p className="max-w-xl leading-7 text-[#59615b]">
+            From describing the service to answering questions, each part of the
+            process should make it easier to understand what happens next.
           </p>
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {teamMembers.map((member) => (
-            <article key={member.role} className="rounded-lg bg-white p-5 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-black/45">
-                {member.role}
-              </p>
-              <h3 className="mt-3 text-xl font-semibold">{member.name}</h3>
-              <p className="mt-3 text-sm leading-6 text-black/62">
+            <article key={member.role} className="rounded-2xl border border-[#e3e8e2] bg-white p-5 shadow-[0_3px_14px_rgba(20,38,31,.04)]">
+              <span className="grid size-10 place-items-center rounded-xl bg-[#e8f3ed] text-[#176b50]"><UiIcon name={member.icon} className="size-5" /></span>
+              <h3 className="mt-4 text-lg font-semibold text-[#17211c]">{member.role}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#626a64]">
                 {member.detail}
               </p>
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="bg-[#202622] py-14 text-white">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">
-              Work standards
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-              Built for reliable service, not random visits.
-            </h2>
-          </div>
-          <div className="grid gap-3 md:grid-cols-2">
-            {workStandards.map((item) => (
-              <p
-                key={item}
-                className="rounded-md border border-white/10 bg-white/[0.07] p-4 text-sm font-semibold text-white/82"
-              >
-                {item}
-              </p>
-            ))}
-          </div>
         </div>
       </section>
 
-      <section id="contact" className="bg-white py-14">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[0.8fr_1.2fr]">
+      <section id="contact" className="bg-white py-6 sm:py-8">
+        <div className="mx-auto grid max-w-[1440px] gap-8 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">
               Contact us
             </p>
-            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#17211c] md:text-4xl">
               Share your requirement and we will help you book the right service.
             </h2>
-            <p className="mt-4 text-black/62">
+            <p className="mt-4 leading-7 text-[#59615b]">
               Fill this form for service questions, company enquiries, employee
               coordination, or urgent booking support.
             </p>
-            <div className="mt-6 grid gap-3 text-sm text-black/65">
-              <a href="tel:+911234567890" className="font-semibold text-black">
+            <div className="mt-6 grid gap-3 text-sm text-[#45584e]">
+              <a href="tel:+911234567890" className="inline-flex items-center gap-3 font-semibold text-[#133d32]">
+                <span className="grid size-10 place-items-center rounded-xl bg-[#e8f3ed]"><UiIcon name="phone" className="size-4" /></span>
                 +91 12345 67890
               </a>
               <a
                 href="mailto:support@trustonservices.com"
-                className="font-semibold text-black"
+                className="inline-flex items-center gap-3 font-semibold text-[#133d32]"
               >
+                <span className="grid size-10 place-items-center rounded-xl bg-[#e8f3ed]"><UiIcon name="mail" className="size-4" /></span>
                 support@trustonservices.com
               </a>
-              <p>Available 7 days a week</p>
+              <p className="text-sm text-[#626a64]">Call or email us to confirm support hours.</p>
             </div>
           </div>
 
@@ -260,7 +211,7 @@ export default function AboutPage() {
             action="mailto:support@trustonservices.com"
             method="post"
             encType="text/plain"
-            className="rounded-lg border border-black/10 bg-[#f7f4ef] p-5 shadow-sm"
+            className="rounded-2xl border border-[#e3e8e2] bg-[#f7f8f4] p-5 shadow-[0_3px_14px_rgba(20,38,31,.04)] sm:p-6"
           >
             <div className="grid gap-4 md:grid-cols-2">
               <label className="text-sm font-medium">
@@ -268,7 +219,7 @@ export default function AboutPage() {
                 <input
                   name="name"
                   required
-                  className="mt-2 w-full rounded-md border border-black/15 bg-white px-3 py-3"
+                  className="mt-2 w-full rounded-xl border border-[#dce3dd] bg-white px-4 py-3"
                   placeholder="Your name"
                 />
               </label>
@@ -278,7 +229,7 @@ export default function AboutPage() {
                   name="phone"
                   required
                   inputMode="tel"
-                  className="mt-2 w-full rounded-md border border-black/15 bg-white px-3 py-3"
+                  className="mt-2 w-full rounded-xl border border-[#dce3dd] bg-white px-4 py-3"
                   placeholder="+91 98765 43210"
                 />
               </label>
@@ -290,7 +241,7 @@ export default function AboutPage() {
                 <input
                   name="email"
                   type="email"
-                  className="mt-2 w-full rounded-md border border-black/15 bg-white px-3 py-3"
+                  className="mt-2 w-full rounded-xl border border-[#dce3dd] bg-white px-4 py-3"
                   placeholder="you@example.com"
                 />
               </label>
@@ -298,7 +249,7 @@ export default function AboutPage() {
                 Service need
                 <select
                   name="service"
-                  className="mt-2 w-full rounded-md border border-black/15 bg-white px-3 py-3"
+                  className="mt-2 w-full rounded-xl border border-[#dce3dd] bg-white px-4 py-3"
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -319,7 +270,7 @@ export default function AboutPage() {
               <textarea
                 name="message"
                 required
-                className="mt-2 min-h-32 w-full rounded-md border border-black/15 bg-white px-3 py-3"
+                className="mt-2 min-h-32 w-full rounded-xl border border-[#dce3dd] bg-white px-4 py-3"
                 placeholder="Tell us your service requirement, address area, preferred time, or enquiry details."
               />
             </label>
@@ -331,9 +282,9 @@ export default function AboutPage() {
               </p>
               <button
                 type="submit"
-                className="rounded-md bg-black px-5 py-3 text-sm font-semibold text-white"
+                className="inline-flex items-center gap-2 rounded-full bg-[#133d32] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0d3027]"
               >
-                Send enquiry
+                Send enquiry <UiIcon name="arrow-right" />
               </button>
             </div>
           </form>
@@ -342,7 +293,7 @@ export default function AboutPage() {
 
       <PageCtaSection
         eyebrow="We are here to help"
-        title="Let’s find the right service for your property."
+        title="Let's find the right service for your property."
         description="Tell our team what you need, or browse the service catalog and choose an option that fits."
         actionLabel="Browse services"
         actionHref="/#services"

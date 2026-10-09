@@ -1,4 +1,5 @@
 import Link from "next/link";
+import UiIcon from "./UiIcon";
 
 const steps = [
   {
@@ -20,7 +21,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section className="bg-[#f2f5f1] py-16 sm:py-20">
+    <section className="bg-[#f2f5f1] py-6 sm:py-8">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
@@ -34,7 +35,7 @@ export default function HowItWorksSection() {
 
         <div className="mt-9 grid gap-4 md:grid-cols-3">
           {steps.map((step) => (
-            <article key={step.number} className="rounded-2xl border border-[#e0e6e0] bg-white p-6 shadow-[0_3px_14px_rgba(20,38,31,.04)] sm:p-7">
+            <article key={step.number} className="rounded-2xl border border-[#e0e6e0] bg-white p-5 shadow-[0_3px_14px_rgba(20,38,31,.04)] sm:p-6">
               <span className="grid size-12 place-items-center rounded-2xl bg-[#e8f3ed] text-sm font-bold text-[#176b50]">{step.number}</span>
               <h3 className="mt-6 text-xl font-semibold tracking-tight">{step.title}</h3>
               <p className="mt-3 text-sm leading-6 text-[#626a64]">{step.detail}</p>
@@ -48,8 +49,8 @@ export default function HowItWorksSection() {
             <p className="mt-1 text-xl font-semibold tracking-tight sm:text-2xl">Talk to our service team before you book.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <a href="tel:+911234567890" className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold transition hover:bg-white/10">Call our team</a>
-            <Link href="/#services" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#133d32] transition hover:bg-[#eaf4ee]">Browse services</Link>
+            <a href="tel:+911234567890" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-semibold transition hover:bg-white/10"><UiIcon name="phone" />Call our team</a>
+            <Link href="/#services" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#133d32] transition hover:bg-[#eaf4ee]">Browse services <UiIcon name="arrow-right" /></Link>
           </div>
         </div>
       </div>

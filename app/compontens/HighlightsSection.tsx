@@ -1,3 +1,5 @@
+import UiIcon from "./UiIcon";
+
 type Highlight = {
   title: string;
   detail: string;
@@ -20,7 +22,7 @@ export default function HighlightsSection({
   tone = "light",
 }: HighlightsSectionProps) {
   return (
-    <section className={tone === "white" ? "bg-white py-16 sm:py-20" : "bg-[#f2f5f1] py-16 sm:py-20"}>
+    <section className={tone === "white" ? "bg-white py-6 sm:py-8" : "bg-[#f2f5f1] py-6 sm:py-8"}>
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <div>
@@ -31,13 +33,13 @@ export default function HighlightsSection({
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {items.map((item, index) => (
-            <article key={item.title} className="rounded-2xl border border-[#e3e8e2] bg-white p-6 shadow-[0_3px_14px_rgba(20,38,31,.04)] sm:p-7">
+          {items.map((item) => (
+            <article key={item.title} className="rounded-2xl border border-[#e3e8e2] bg-white p-5 shadow-[0_3px_14px_rgba(20,38,31,.04)] sm:p-6">
               <div className="flex items-center justify-between gap-3">
-                <span className="grid size-11 place-items-center rounded-xl bg-[#e8f3ed] text-sm font-bold text-[#176b50]">0{index + 1}</span>
+                <span className="grid size-11 place-items-center rounded-full bg-[#e8f3ed] text-[#176b50]"><UiIcon name="check" className="size-5" /></span>
                 <span className="rounded-full bg-[#f3f6f3] px-3 py-1.5 text-xs font-semibold text-[#557263]">{item.tag}</span>
               </div>
-              <h3 className="mt-6 text-xl font-semibold tracking-tight">{item.title}</h3>
+              <h3 className="mt-5 text-xl font-semibold tracking-tight">{item.title}</h3>
               <p className="mt-3 text-sm leading-6 text-[#626a64]">{item.detail}</p>
             </article>
           ))}

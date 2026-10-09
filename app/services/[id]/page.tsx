@@ -8,17 +8,11 @@ import Footer from "../../compontens/Footer";
 import Header from "../../compontens/Header";
 import HighlightsSection from "../../compontens/HighlightsSection";
 import PageCtaSection from "../../compontens/PageCtaSection";
-import { getServiceById, services } from "../../compontens/homeData";
-
-type ServiceCategory = (typeof services)[number]["subcategories"][number];
+import { getServiceById, services, SITE_IMAGE } from "../../compontens/homeData";
 
 type ServicePageProps = {
   params: Promise<{ id: string }>;
 };
-
-function getCategoryImage(category: ServiceCategory, fallbackImage: string) {
-  return (category as ServiceCategory & { image?: string }).image ?? fallbackImage;
-}
 
 export function generateStaticParams() {
   return services.map((service) => ({ id: service.id }));
@@ -58,7 +52,7 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
 
       <section className="relative overflow-hidden bg-[#edf3ef]">
         <div className="pointer-events-none absolute -right-24 -top-36 size-[30rem] rounded-full bg-[#d6e9dd] blur-3xl" />
-        <div className="relative mx-auto grid max-w-[1440px] items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_430px] lg:gap-16 lg:px-12 lg:py-20">
+        <div className="relative mx-auto grid max-w-[1440px] items-center gap-10 px-5 py-6 sm:px-8 sm:py-8 lg:grid-cols-[1fr_430px] lg:gap-16 lg:px-12 lg:py-10">
           <div>
             <Link href="/#services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#315c4c] transition hover:text-[#133d32]">
               <span aria-hidden="true">←</span> All services
@@ -67,19 +61,18 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
             <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.04em] sm:text-5xl md:text-6xl">{service.name}, done right.</h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[#555e58]">{service.description} Choose the option that fits your home and see clear pricing before you book.</p>
             <div className="mt-7 flex flex-wrap gap-2.5 text-sm font-medium text-[#315c4c]">
-              {["Verified professionals", "Upfront pricing", service.eta].map((item) => <span key={item} className="rounded-full border border-[#c9d9d0] bg-white/75 px-4 py-2">{item}</span>)}
+              {["Compare service options", "Starting prices shown", "Choose a preferred time"].map((item) => <span key={item} className="rounded-full border border-[#c9d9d0] bg-white/75 px-4 py-2">{item}</span>)}
             </div>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <span className="text-sm text-[#657069]">Customer rating</span>
-              <span className="rounded-full bg-white px-4 py-2 text-sm font-bold text-[#176b50] shadow-sm">{service.rating} <span className="text-amber-500">★</span></span>
-              <span className="text-sm text-[#657069]">{service.subcategories.length} options to choose from</span>
+              <span className="text-sm text-[#657069]">Available service types</span>
+              <span className="rounded-full bg-white px-4 py-2 text-sm font-bold text-[#176b50] shadow-sm">{service.subcategories.length} options</span>
             </div>
           </div>
 
           <aside className="overflow-hidden rounded-[1.75rem] border border-white bg-white p-2.5 shadow-[0_24px_60px_rgba(19,61,50,.16)]">
             <div className="relative aspect-[1.5] overflow-hidden rounded-[1.25rem]">
-              <Image src={service.image} alt={`${service.name} professional at work`} fill priority sizes="(min-width: 1024px) 430px, 100vw" className="object-cover" />
-              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3.5 py-2 text-xs font-semibold text-[#133d32] shadow-sm">{service.badge}</span>
+              <Image src={SITE_IMAGE} alt="" fill priority sizes="(min-width: 1024px) 430px, 100vw" className="object-cover" />
+              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3.5 py-2 text-xs font-semibold text-[#133d32] shadow-sm">{service.category}</span>
             </div>
             <div className="p-4 sm:p-5">
               <div className="flex items-end justify-between gap-4">
@@ -101,7 +94,7 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section id="service-types" className="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
+      <section id="service-types" className="mx-auto max-w-[1440px] px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
         <div className="max-w-2xl">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#168365]">Choose a service type</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Find the right {service.name.toLowerCase()} service.</h2>
@@ -116,8 +109,8 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
             >
               <div className="relative aspect-[4/3] bg-[#f7f4ef]">
                 <Image
-                  src={getCategoryImage(item, service.image)}
-                  alt={`${item.name} service`}
+                  src={SITE_IMAGE}
+                  alt=""
                   fill
                   sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover"
@@ -157,12 +150,12 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
         items={[
           { title: "Compare service types", detail: `Explore ${service.subcategories.length} options for ${service.name.toLowerCase()} and review what each one covers.`, tag: "Find your fit" },
           { title: "Review price and duration", detail: "Each option shows a starting price and estimated duration before you book.", tag: "Plan ahead" },
-          { title: "Arrange a convenient visit", detail: `${service.eta}. Call the team if you need help with timing or service selection.`, tag: "Easy scheduling" },
+          { title: "Choose a preferred time", detail: "Share a visit time that works for you. The team will confirm availability.", tag: "Scheduling" },
         ]}
         tone="white"
       />
 
-      <section className="bg-white py-14">
+      <section className="bg-white py-6 sm:py-8">
         <div className="mx-auto max-w-7xl px-5">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
@@ -186,8 +179,8 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
               >
                 <div className="relative aspect-[4/3]">
                   <Image
-                    src={item.image}
-                    alt={`${item.name} service`}
+                    src={SITE_IMAGE}
+                    alt=""
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className="object-cover"

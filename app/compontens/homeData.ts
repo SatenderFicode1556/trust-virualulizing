@@ -1,21 +1,19 @@
+export const SITE_IMAGE = "/services/deep-cleaning-photo.png";
+
 export const services = [
   {
     id: "salon-at-home",
     name: "Salon at home",
     icon: "/services/salon.svg",
-    image: "/services/salon-photo.png",
+    image: SITE_IMAGE,
     category: "Beauty and wellness",
     price: 499,
     duration: "45-90 min",
-    rating: "4.8",
-    bookings: "1.8k bookings",
-    eta: "Same day slots",
-    badge: "Trending",
     tone: "bg-rose-100 text-rose-900",
     accent: "from-rose-100 via-white to-pink-50",
     description:
-      "Professional grooming, facial, waxing, and hair care services delivered by verified beauty experts.",
-    includes: ["Hygiene kit", "Verified stylist", "Transparent add-ons"],
+      "Grooming, facial, waxing, and hair care services arranged with beauty professionals.",
+    includes: ["Hygiene kit", "Stylist for selected service", "Extras discussed before work"],
     popularFor: ["Facial cleanup", "Waxing", "Hair spa"],
     subcategories: [
       {
@@ -45,25 +43,21 @@ export const services = [
     id: "ac-repair",
     name: "AC repair",
     icon: "/services/ac-repair.svg",
-    image: "/services/ac-repair-photo.png",
+    image: SITE_IMAGE,
     category: "Appliance care",
     price: 299,
     duration: "30-60 min",
-    rating: "4.7",
-    bookings: "934 live slots",
-    eta: "Technician in 45 min",
-    badge: "Fastest",
     tone: "bg-cyan-100 text-cyan-900",
     accent: "from-cyan-100 via-white to-sky-50",
     description:
       "Inspection, servicing, gas checks, cooling issue diagnosis, and repair for split and window AC units.",
-    includes: ["Diagnosis report", "Spare quote", "30-day service support"],
+    includes: ["Diagnosis details", "Spare quote before replacement", "Follow-up terms confirmed before booking"],
     popularFor: ["Low cooling", "Water leakage", "Annual service"],
     subcategories: [
       {
         id: "split-ac",
         name: "Split AC service",
-        image: "/services/split-ac-photo.png",
+        image: SITE_IMAGE,
         price: 499,
         duration: "45-60 min",
         description: "Indoor unit filter cleaning, coil wash, drain check, and cooling inspection.",
@@ -71,7 +65,7 @@ export const services = [
       {
         id: "window-ac",
         name: "Window AC service",
-        image: "/services/window-ac-photo.png",
+        image: SITE_IMAGE,
         price: 399,
         duration: "40-55 min",
         description: "Filter cleaning, coil cleaning, fan check, and basic performance testing.",
@@ -79,7 +73,7 @@ export const services = [
       {
         id: "gas-refill",
         name: "AC gas refill",
-        image: "/services/ac-gas-refill-photo.png",
+        image: SITE_IMAGE,
         price: 1899,
         duration: "60-90 min",
         description: "Leak check, pressure testing, and refrigerant refill as per AC tonnage.",
@@ -87,7 +81,7 @@ export const services = [
       {
         id: "installation",
         name: "AC installation",
-        image: "/services/ac-installation-photo.png",
+        image: SITE_IMAGE,
         price: 1499,
         duration: "90-150 min",
         description: "Mounting, copper pipe connection, drainage setup, and test run.",
@@ -98,19 +92,15 @@ export const services = [
     id: "deep-cleaning",
     name: "Deep cleaning",
     icon: "/services/deep-cleaning.svg",
-    image: "/services/deep-cleaning-photo.png",
+    image: SITE_IMAGE,
     category: "Home cleaning",
     price: 1299,
     duration: "2-5 hrs",
-    rating: "4.9",
-    bookings: "612 teams",
-    eta: "Next slot today",
-    badge: "Best rated",
     tone: "bg-emerald-100 text-emerald-900",
     accent: "from-emerald-100 via-white to-lime-50",
     description:
-      "Room, bathroom, kitchen, sofa, and full-home cleaning with trained teams and professional supplies.",
-    includes: ["Machine cleaning", "Trained team", "Before-after checklist"],
+      "Cleaning options for rooms, bathrooms, kitchens, sofas, and full homes.",
+    includes: ["Cleaning equipment", "Selected cleaning scope", "Before-and-after checklist"],
     popularFor: ["Kitchen cleaning", "Bathroom cleaning", "Full home"],
     subcategories: [
       {
@@ -140,19 +130,15 @@ export const services = [
     id: "plumbing",
     name: "Plumbing",
     icon: "/services/plumbing.svg",
-    image: "/services/plumbing-photo.png",
+    image: SITE_IMAGE,
     category: "Home repair",
     price: 199,
     duration: "20-60 min",
-    rating: "4.6",
-    bookings: "24 min ETA",
-    eta: "Emergency support",
-    badge: "On demand",
     tone: "bg-amber-100 text-amber-950",
     accent: "from-amber-100 via-white to-orange-50",
     description:
-      "Leak repair, tap fitting, drainage fixes, flush repairs, and installation work by trained plumbers.",
-    includes: ["Visit inspection", "Material estimate", "Work warranty"],
+      "Help with leak repair, tap fitting, drainage fixes, flush repairs, and installation work.",
+    includes: ["Visit inspection", "Material estimate", "Work terms discussed before starting"],
     popularFor: ["Leakage", "Tap fitting", "Drain blockage"],
     subcategories: [
       {
@@ -182,19 +168,15 @@ export const services = [
     id: "washing-machine",
     name: "Washing machine",
     icon: "/services/washing-machine.svg",
-    image: "/services/washing-machine-photo.png",
+    image: SITE_IMAGE,
     category: "Appliance care",
     price: 349,
     duration: "30-75 min",
-    rating: "4.7",
-    bookings: "520 bookings",
-    eta: "Same day visit",
-    badge: "Popular",
     tone: "bg-blue-100 text-blue-900",
     accent: "from-blue-100 via-white to-sky-50",
     description:
       "Diagnosis, servicing, drainage checks, vibration issues, and repair support for washing machines.",
-    includes: ["Diagnosis report", "Spare quote", "Service support"],
+    includes: ["Diagnosis details", "Spare quote before replacement", "Follow-up terms confirmed before booking"],
     popularFor: ["Front load", "Top load", "Drain issue"],
     subcategories: [
       {
@@ -224,14 +206,10 @@ export const services = [
     id: "electrician",
     name: "Electrician",
     icon: "/services/electrician.svg",
-    image: "/services/electrician-photo.png",
+    image: SITE_IMAGE,
     category: "Electrical work",
     price: 199,
     duration: "20-60 min",
-    rating: "4.6",
-    bookings: "740 bookings",
-    eta: "Fast visit",
-    badge: "Essential",
     tone: "bg-yellow-100 text-yellow-950",
     accent: "from-yellow-100 via-white to-amber-50",
     description:
@@ -266,14 +244,10 @@ export const services = [
     id: "parceling",
     name: "Parceling",
     icon: "/services/parceling.svg",
-    image: "/services/parceling-photo.png",
+    image: SITE_IMAGE,
     category: "Packing help",
     price: 299,
     duration: "30-120 min",
-    rating: "4.5",
-    bookings: "310 bookings",
-    eta: "Scheduled slots",
-    badge: "Helpful",
     tone: "bg-green-100 text-green-900",
     accent: "from-green-100 via-white to-emerald-50",
     description:
@@ -308,14 +282,10 @@ export const services = [
     id: "home-painter",
     name: "Home painter",
     icon: "/services/home-painter.svg",
-    image: "/services/home-painter-photo.png",
+    image: SITE_IMAGE,
     category: "Home improvement",
     price: 1499,
     duration: "4-8 hrs",
-    rating: "4.7",
-    bookings: "430 bookings",
-    eta: "Site visit slots",
-    badge: "Premium",
     tone: "bg-pink-100 text-pink-900",
     accent: "from-pink-100 via-white to-rose-50",
     description:
@@ -362,32 +332,8 @@ export function getServiceCategory(serviceId: string, categoryId: string) {
 export const bookingSteps = [
   "Choose service",
   "Select exact type",
-  "Pick slot",
-  "Track professional",
-];
-
-export const testimonials = [
-  {
-    name: "Riya Sharma",
-    area: "Gurugram",
-    rating: "5.0",
-    text: "The AC technician arrived on time, explained the issue clearly, and fixed cooling in one visit. The booking flow felt very simple.",
-    service: "Split AC service",
-  },
-  {
-    name: "Aman Verma",
-    area: "Noida",
-    rating: "4.9",
-    text: "Booked bathroom cleaning before guests arrived. The team was professional, carried proper tools, and shared photos after completion.",
-    service: "Bathroom cleaning",
-  },
-  {
-    name: "Neha Kapoor",
-    area: "Delhi",
-    rating: "4.8",
-    text: "I liked that the price and duration were visible before booking. The salon service felt premium and hygienic.",
-    service: "Salon at home",
-  },
+  "Pick preferred time",
+  "Review details",
 ];
 
 export const faqs = [
@@ -402,14 +348,14 @@ export const faqs = [
       "The shown price is a starter estimate. Final cost depends on scope, materials, spare parts, and add-ons confirmed before work starts.",
   },
   {
-    question: "Can I track the assigned professional?",
+    question: "How can I get an update about my booking?",
     answer:
-      "Yes. The planned flow supports job assignment, ETA, status updates, and manager-side tracking for field teams.",
+      "Call our support team with your booking details and they can help you with the next steps.",
   },
   {
     question: "What happens if I need support after service?",
     answer:
-      "Each eligible service can include support windows, inspection notes, and customer feedback so follow-up is easy to manage.",
+      "Follow-up terms depend on the service. Ask our team what applies to your selected service before confirming.",
   },
   {
     question: "Can I choose the time slot myself?",
@@ -419,7 +365,7 @@ export const faqs = [
   {
     question: "Do professionals bring tools and materials?",
     answer:
-      "Professionals carry basic tools for inspection and standard work. If extra materials or spare parts are needed, the cost is shared before work begins.",
+      "Tools and materials depend on the service. Ask the team what is included and whether any additional materials may cost extra.",
   },
   {
     question: "Is there a visiting charge?",
@@ -437,59 +383,36 @@ export const faqs = [
       "The professional can review the requirement during inspection and suggest the correct service type before starting work.",
   },
   {
-    question: "Do you provide same-day service?",
+    question: "Can I request a specific visit time?",
     answer:
-      "Same-day slots may be available for services like AC repair, plumbing, electrical work, and cleaning depending on your location and team availability.",
-  },
-];
-
-export const trustedPartners = [
-  {
-    name: "Verified Professionals",
-    detail: "Background-checked service experts",
-    metric: "2.4k+",
-  },
-  {
-    name: "Quality Supply Network",
-    detail: "Approved tools and consumables",
-    metric: "180+",
-  },
-  {
-    name: "City Operations Teams",
-    detail: "Managers for assignment and SLA",
-    metric: "42",
-  },
-  {
-    name: "Customer Support Desk",
-    detail: "Escalation and feedback handling",
-    metric: "7 days",
+      "You can choose a preferred time in the booking form. The team will confirm the available slot with you.",
   },
 ];
 
 export const industriesWeServe = [
   {
     name: "Residential societies",
-    image: "/services/deep-cleaning-photo.png",
+    image: SITE_IMAGE,
     detail: "Apartments, villas, and gated communities",
   },
   {
     name: "Corporate offices",
-    image: "/services/electrician-photo.png",
+    image: SITE_IMAGE,
     detail: "Workspaces, cabins, and admin facilities",
   },
   {
     name: "Hotels & resorts",
-    image: "/services/ac-repair-photo.png",
+    image: SITE_IMAGE,
     detail: "Guest rooms, kitchens, and maintenance areas",
   },
   {
     name: "Restaurants & cafes",
-    image: "/services/plumbing-photo.png",
+    image: SITE_IMAGE,
     detail: "Cleaning, plumbing, electrical, and AC support",
   },
   {
     name: "Retail stores",
-    image: "/services/salon-photo.png",
+    image: SITE_IMAGE,
     detail: "Showrooms, salons, and customer-facing spaces",
   },
 ];
@@ -517,9 +440,9 @@ export const roleCards = [
   },
 ];
 
-export const metrics = [
-  ["42", "active cities"],
-  ["12k", "monthly bookings"],
-  ["98%", "SLA compliance"],
-  ["4.8", "avg. rating"],
+export const servicePromises = [
+  ["Clear pricing", "See a starting price before you send a request."],
+  ["Service choices", "Choose the type of work that fits your need."],
+  ["Flexible timing", "Share a preferred visit slot in the booking form."],
+  ["Human support", "Call us if you need help choosing a service."],
 ];

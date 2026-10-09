@@ -2,7 +2,7 @@ import Button from "./Button";
 
 export default function FeedbackSection() {
   return (
-    <section className="bg-[#202622] py-14 text-white">
+    <section className="bg-[#202622] py-6 text-white sm:py-8">
       <div className="mx-auto grid max-w-7xl gap-6 px-5 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">
@@ -12,14 +12,14 @@ export default function FeedbackSection() {
             Help us improve every home visit.
           </h2>
           <p className="mt-4 max-w-xl text-white/62">
-            Customers can share service quality, punctuality, pricing clarity,
-            and professional behavior after every booking.
+            Once you have used a service, tell us about communication, timing,
+            and the work so we can improve the experience.
           </p>
           <div className="mt-6 grid grid-cols-3 gap-3">
             {["Quality", "Timing", "Support"].map((item) => (
               <div key={item} className="rounded-md bg-white/10 p-4">
                 <p className="text-sm text-white/55">{item}</p>
-                <p className="mt-2 text-2xl font-semibold">4.8</p>
+                <p className="mt-2 text-sm font-semibold">Your feedback</p>
               </div>
             ))}
           </div>

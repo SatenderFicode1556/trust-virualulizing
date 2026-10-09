@@ -1,53 +1,37 @@
-import { trustedPartners } from "./homeData";
+const serviceStandards = [
+  {
+    title: "Choose the work you need",
+    detail: "Review service options and descriptions before sending a booking request.",
+    marker: "01",
+  },
+  {
+    title: "See a starting price first",
+    detail: "Starting prices are shown with each service option to help you plan.",
+    marker: "02",
+  },
+  {
+    title: "Discuss extra work before it starts",
+    detail: "If the job needs anything beyond the selected service, ask for the cost before proceeding.",
+    marker: "03",
+  },
+];
 
 export default function TrustedPartnersSection() {
   return (
-    <section id="partners" className="bg-[#133d32] py-16 text-white sm:py-20">
+    <section id="partners" className="bg-[#133d32] py-6 text-white sm:py-8">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#b9e7d1]">
-              Trust network
-            </p>
-            <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight md:text-5xl">
-              A service company backed by verified people and reliable systems.
-            </h2>
-          </div>
-          <div className="grid gap-3 rounded-lg border border-white/10 bg-white/[0.06] p-4 md:grid-cols-3">
-            {[
-              ["4.8", "average rating"],
-              ["42", "active city zones"],
-              ["12k+", "monthly bookings"],
-            ].map(([value, label]) => (
-              <div key={label} className="rounded-md bg-white/10 p-4">
-                <p className="text-2xl font-semibold">{value}</p>
-                <p className="mt-1 text-sm text-white/55">{label}</p>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#b9e7d1]">A clear service experience</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">Know what to expect before you book.</h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/70">We are building TrustonServices around straightforward choices and clear communication at every step.</p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {trustedPartners.map((partner) => (
-            <article
-              key={partner.name}
-              className="rounded-lg border border-white/10 bg-white/[0.07] p-5 shadow-sm"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <span className="grid size-11 place-items-center rounded-md bg-[#a7e8c7] text-sm font-semibold text-black">
-                  TS
-                </span>
-                <span className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-black">
-                  {partner.metric}
-                </span>
-              </div>
-              <h3 className="mt-8 text-xl font-semibold">{partner.name}</h3>
-              <p className="mt-3 text-sm leading-6 text-white/62">
-                {partner.detail}
-              </p>
-              <p className="mt-5 rounded-md border border-white/10 px-3 py-2 text-sm font-semibold text-[#a7e8c7]">
-                Verified network
-              </p>
+        <div className="mt-9 grid gap-4 md:grid-cols-3">
+          {serviceStandards.map((item) => (
+            <article key={item.marker} className="rounded-2xl border border-white/10 bg-white/[0.07] p-6 sm:p-7">
+              <span className="grid size-11 place-items-center rounded-xl bg-[#b9e7d1] text-sm font-bold text-[#133d32]">{item.marker}</span>
+              <h3 className="mt-6 text-xl font-semibold">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-white/70">{item.detail}</p>
             </article>
           ))}
         </div>

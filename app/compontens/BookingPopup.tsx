@@ -3,7 +3,7 @@
 import Image from "next/image";
 import type { FormEvent } from "react";
 import { useMemo, useState } from "react";
-import { services } from "./homeData";
+import { services, SITE_IMAGE } from "./homeData";
 
 type BookingPopupProps = {
   initialCategoryId?: string;
@@ -12,14 +12,12 @@ type BookingPopupProps = {
   triggerLabel?: string;
 };
 
-type ServiceCategory = (typeof services)[number]["subcategories"][number];
-
 const slots = [
-  "Today, 4:00 PM",
-  "Today, 7:00 PM",
-  "Tomorrow, 10:00 AM",
-  "Tomorrow, 2:00 PM",
-  "Weekend morning",
+  "Morning (9:00 AM–12:00 PM)",
+  "Afternoon (12:00–4:00 PM)",
+  "Evening (4:00–8:00 PM)",
+  "Weekend",
+  "Flexible",
 ];
 
 const bookingSteps = [
@@ -28,10 +26,6 @@ const bookingSteps = [
   { title: "Details", helper: "Add contact and address" },
   { title: "Review", helper: "Confirm request" },
 ];
-
-function getCategoryImage(category: ServiceCategory, fallbackImage: string) {
-  return (category as ServiceCategory & { image?: string }).image ?? fallbackImage;
-}
 
 export default function BookingPopup({
   initialCategoryId,
@@ -66,7 +60,6 @@ export default function BookingPopup({
     );
   }, [categoryId, selectedService]);
 
-  const selectedImage = getCategoryImage(selectedCategory, selectedService.image);
   const canContinue =
     currentStep === 0 ||
     (currentStep === 1 && pincode.trim().length >= 6) ||
@@ -119,10 +112,10 @@ export default function BookingPopup({
               <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-black/10 bg-white px-5 py-4">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">
-                    Manual booking
+                    Booking details
                   </p>
                   <h2 className="mt-1 text-2xl font-semibold">
-                    Book step by step
+                    Tell us what you need
                   </h2>
                 </div>
                 <button
@@ -143,21 +136,18 @@ export default function BookingPopup({
                     </div>
                     <div>
                       <h3 className="text-2xl font-semibold">
-                        Booking request sent
+                        One last step to confirm
                       </h3>
                       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-black/58">
-                        Your {selectedCategory.name} request is ready for manual
-                        assignment. Our team will call you and share the
-                        professional details before the visit.
+                        Your details have not been sent from this website. Call
+                        our team and share your selected service and preferred
+                        time to confirm the request.
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      className="mx-auto rounded-md bg-black px-5 py-3 text-sm font-semibold text-white"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Done
-                    </button>
+                    <div className="mx-auto flex flex-wrap justify-center gap-3">
+                      <a href="tel:+911234567890" className="rounded-full bg-[#133d32] px-5 py-3 text-sm font-semibold text-white">Call to confirm</a>
+                      <button type="button" className="rounded-full border border-black/15 px-5 py-3 text-sm font-semibold" onClick={() => setIsOpen(false)}>Close</button>
+                    </div>
                   </div>
                 ) : (
                   <>
@@ -199,8 +189,8 @@ export default function BookingPopup({
                       <div className="overflow-hidden rounded-lg bg-[#f7f4ef]">
                         <div className="relative aspect-[4/3]">
                           <Image
-                            src={selectedImage}
-                            alt={`${selectedCategory.name} preview`}
+                            src={SITE_IMAGE}
+                            alt=""
                             fill
                             sizes="(min-width: 1024px) 330px, 100vw"
                             className="object-cover"
@@ -214,7 +204,7 @@ export default function BookingPopup({
                             {selectedCategory.name}
                           </p>
                           <p className="mt-1 text-sm text-black/60">
-                            {selectedCategory.duration} - {selectedService.rating} rated
+                            Estimated visit: {selectedCategory.duration}
                           </p>
                           <p className="mt-3 text-2xl font-semibold">
                             Rs. {selectedCategory.price}
@@ -272,7 +262,7 @@ export default function BookingPopup({
                         {currentStep === 1 ? (
                           <div className="grid gap-4 sm:grid-cols-2">
                             <label className="text-sm font-medium">
-                              Slot
+                                Preferred time
                               <select
                                 className="mt-2 w-full rounded-md border border-black/15 bg-white px-3 py-3"
                                 value={slot}
@@ -384,7 +374,7 @@ export default function BookingPopup({
                         disabled={!canContinue}
                       >
                         {currentStep === bookingSteps.length - 1
-                          ? "Confirm booking request"
+                          ? "Review booking details"
                           : "Continue"}
                       </button>
                     </div>

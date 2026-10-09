@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { services } from "./homeData";
+import { services, SITE_IMAGE } from "./homeData";
+import UiIcon from "./UiIcon";
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-white py-16 sm:py-20">
+    <section id="services" className="bg-white py-6 sm:py-8">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
@@ -29,17 +30,14 @@ export default function ServicesSection() {
             >
               <div className="relative aspect-[5/3] overflow-hidden">
                 <Image
-                  src={service.image}
-                  alt={`${service.name} service`}
+                  src={SITE_IMAGE}
+                  alt=""
                   fill
                   sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover transition duration-500 group-hover:scale-105"
                 />
-                <span className="absolute right-3 top-3 rounded-full bg-[#133d32] px-3.5 py-1.5 text-xs font-semibold text-white shadow-lg">
-                  {service.badge}
-                </span>
               </div>
-              <div className="p-5">
+              <div className="p-4 sm:p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-black/45">
                   {service.category}
                 </p>
@@ -55,13 +53,14 @@ export default function ServicesSection() {
                         Rs. {service.price}
                       </p>
                     </div>
-                    <div className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
-                      {service.rating} rated
+                    <div className="inline-flex items-center gap-1.5 rounded-full bg-[#edf3ef] px-3 py-1.5 text-xs font-semibold text-[#315c4c]">
+                      <UiIcon name="clock" className="size-3.5" />
+                      {service.duration}
                     </div>
                   </div>
                   <div className="mt-3 flex items-center justify-between border-t border-black/10 pt-3 text-sm text-black/60">
-                    <span>{service.duration}</span>
-                    <span>Choose type</span>
+                    <span>Estimated visit time</span>
+                    <span className="inline-flex items-center gap-1 font-semibold text-[#176b50]">View options <UiIcon name="arrow-right" className="size-4" /></span>
                   </div>
                 </div>
               </div>

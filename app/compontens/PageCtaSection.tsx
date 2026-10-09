@@ -35,8 +35,8 @@ export default function PageCtaSection({
   secondaryHref,
 }: PageCtaSectionProps) {
   return (
-    <section className="bg-white px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-7 overflow-hidden rounded-[1.75rem] bg-[#133d32] p-7 text-white shadow-[0_20px_50px_rgba(19,61,50,.14)] sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12">
+    <section className="bg-white px-5 py-4 sm:px-8 sm:py-6 lg:px-12">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 overflow-hidden rounded-[1.75rem] bg-[#133d32] p-6 text-white shadow-[0_20px_50px_rgba(19,61,50,.14)] sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:p-9">
         <div className="max-w-3xl">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#b9e7d1]">{eyebrow}</p>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
