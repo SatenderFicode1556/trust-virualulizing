@@ -1,7 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { services, SITE_IMAGE } from "./homeData";
+import { services } from "./homeData";
 import UiIcon from "./UiIcon";
+
+const serviceVisuals: Record<string, "sparkle" | "wrench" | "home" | "check"> = {
+  "salon-at-home": "sparkle",
+  "ac-repair": "wrench",
+  "deep-cleaning": "sparkle",
+  plumbing: "wrench",
+  "washing-machine": "home",
+  electrician: "check",
+  parceling: "home",
+  "home-painter": "wrench",
+} as const;
 
 export default function ServicesSection() {
   return (
@@ -28,20 +39,32 @@ export default function ServicesSection() {
               href={`/services/${service.id}`}
               className="group overflow-hidden rounded-2xl border border-[#e8e7e2] bg-white shadow-[0_3px_12px_rgba(20,38,31,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#b9d6ca] hover:shadow-[0_18px_38px_rgba(20,38,31,.12)]"
             >
-              <div className="relative aspect-[5/3] overflow-hidden">
-                <Image
-                  src={SITE_IMAGE}
-                  alt=""
-                  fill
-                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
+              <div className={`relative flex aspect-[5/3] items-end justify-between overflow-hidden bg-gradient-to-br p-5 sm:p-6 ${service.accent}`}>
+                {service.image ? (
+                  <>
+                    <Image src={service.image} alt={`${service.name} service`} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
+                    <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#10251e]/65 via-transparent to-[#10251e]/10" />
+                    <span className="relative rounded-full border border-white/40 bg-[#10251e]/55 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.15em] text-white backdrop-blur-sm">{service.category}</span>
+                  </>
+                ) : (
+                  <>
+                    <div aria-hidden="true" className="absolute -right-8 -top-12 size-48 rounded-full border-[28px] border-white/35 transition-transform duration-500 group-hover:scale-110" />
+                    <div className="relative">
+                      <span className="inline-flex rounded-full border border-white/70 bg-white/65 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.15em] text-[#385346] backdrop-blur-sm">At-home service</span>
+                      <p className="mt-3 text-sm font-semibold text-[#385346]">Choose a service that fits</p>
+                    </div>
+                    <span className="relative grid size-16 place-items-center rounded-[1.35rem] border border-white/80 bg-white/75 text-[#176b50] shadow-[0_8px_22px_rgba(20,38,31,.1)] backdrop-blur-sm transition duration-300 group-hover:-translate-y-1 group-hover:rotate-3 sm:size-[4.5rem]">
+                      <UiIcon name={serviceVisuals[service.id]} className="size-8" />
+                    </span>
+                  </>
+                )}
               </div>
               <div className="p-4 sm:p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-black/45">
                   {service.category}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold tracking-tight">{service.name}</h3>
+                <p className="mt-2 min-h-12 text-sm leading-6 text-[#626a64] line-clamp-2">{service.description}</p>
 
                 <div className="mt-4 rounded-xl border border-[#e8e7e2] bg-[#fbfaf7] p-3.5">
                   <div className="flex items-center justify-between gap-3">

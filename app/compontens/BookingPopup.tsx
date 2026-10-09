@@ -13,7 +13,7 @@ type BookingPopupProps = {
   triggerContent?: ReactNode;
 };
 
-const fieldClass = "mt-2 w-full rounded-xl border border-[#d9dfda] bg-white px-4 py-3 text-sm text-[#202a24] outline-none transition placeholder:text-[#929b95] focus:border-[#26745c] focus:ring-2 focus:ring-[#26745c]/15";
+const fieldClass = "mt-1.5 min-h-11 w-full rounded-lg border border-[#d9dfda] bg-white px-3.5 py-2.5 text-sm text-[#202a24] outline-none transition placeholder:text-[#929b95] focus:border-[#26745c] focus:ring-2 focus:ring-[#26745c]/15";
 
 export default function BookingPopup({
   initialCategoryId,
@@ -70,37 +70,34 @@ export default function BookingPopup({
 
   const modal = isOpen ? (
     <div
-      className="fixed inset-0 z-[9999] grid place-items-center overflow-y-auto bg-[#10251e]/65 p-4 backdrop-blur-sm sm:p-6"
+      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto bg-[#10251e]/55 p-4 backdrop-blur-sm sm:p-6"
       onMouseDown={(event) => { if (event.target === event.currentTarget) setIsOpen(false); }}
     >
-      <section role="dialog" aria-modal="true" aria-labelledby="booking-title" className="my-auto max-h-[calc(100dvh-2rem)] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#fbfaf7] shadow-2xl sm:max-h-[calc(100dvh-3rem)]">
-        <header className="sticky top-0 z-10 flex items-center justify-between border-b border-[#e6e8e2] bg-white px-5 py-4 sm:px-7">
+      <section role="dialog" aria-modal="true" aria-labelledby="booking-title" className="my-auto max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-y-auto rounded-2xl border border-[#e7eae5] bg-white shadow-[0_24px_80px_rgba(10,30,20,.24)]">
+        <header className="sticky top-0 z-10 flex items-center justify-between border-b border-[#e9ece7] bg-white px-5 py-4 sm:px-6">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[.14em] text-[#718078]">TrustonServices · Booking request</p>
-            <h2 id="booking-title" className="mt-1 text-xl font-semibold text-[#1b2c23]">{submitted ? "Your request is ready" : "Book a service"}</h2>
+            <h2 id="booking-title" className="mt-1 text-xl font-semibold tracking-tight text-[#1b2c23]">{submitted ? "Request prepared" : "Book a service"}</h2>
           </div>
-          <button type="button" onClick={() => setIsOpen(false)} aria-label="Close booking form" className="grid size-10 place-items-center rounded-full border border-[#dce1dc] text-xl leading-none text-[#52615a] transition hover:bg-[#f2f4f1]">×</button>
+          <button type="button" onClick={() => setIsOpen(false)} aria-label="Close booking form" className="grid size-9 place-items-center rounded-full border border-[#dce1dc] text-lg leading-none text-[#52615a] transition hover:bg-[#f2f4f1]">×</button>
         </header>
 
         {submitted ? (
-          <div className="p-5 sm:p-7">
-            <div className="rounded-xl border border-[#dce9df] bg-[#f1f7f2] p-4 text-sm leading-6 text-[#43584a]">
-              <p className="font-semibold text-[#1b4936]">Thanks. Your booking details are prepared.</p>
-              <p className="mt-1">This website does not send or save booking requests yet. Please call our team to check availability and confirm your service.</p>
+          <div aria-live="polite" className="p-5 sm:p-6">
+            <div className="rounded-xl border border-[#dce9df] bg-[#f3f8f3] p-4 text-sm leading-6 text-[#43584a]">
+              <p className="font-semibold text-[#1b4936]">Your details are ready.</p>
+              <p className="mt-1">This website does not send or save booking requests yet. Call our team to check availability and confirm your service.</p>
             </div>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <a href="tel:+911234567890" className="rounded-xl bg-[#133d32] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0c3027]">Call to confirm</a>
-              <button type="button" onClick={() => setIsOpen(false)} className="rounded-xl border border-[#d9dfda] bg-white px-5 py-3 text-sm font-semibold text-[#34463b]">Close</button>
+            <div className="mt-4 flex gap-3">
+              <a href="tel:+911234567890" className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#133d32] px-4 text-sm font-semibold text-white transition hover:bg-[#0c3027]">Call to confirm</a>
+              <button type="button" onClick={() => setIsOpen(false)} className="inline-flex min-h-11 items-center justify-center rounded-lg border border-[#d9dfda] px-4 text-sm font-semibold text-[#34463b] hover:bg-[#f7f8f6]">Close</button>
             </div>
           </div>
         ) : (
-          <form onSubmit={submitForm} className="space-y-5 p-5 sm:p-7">
-            <div>
-              <h3 className="font-semibold text-[#263a31]">Tell us what you need</h3>
-              <p className="mt-1 text-sm leading-6 text-[#68756d]">Choose a service and share your visit details. Our team will help confirm availability.</p>
-            </div>
+          <form onSubmit={submitForm} className="space-y-4 p-5 sm:p-6">
+            <p className="text-sm leading-6 text-[#68756d]">Choose your service and share a few visit details. Our team will follow up to confirm availability.</p>
 
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <label className="block text-sm font-medium text-[#344239]">Service
                 <select className={fieldClass} value={serviceId} onChange={(event) => changeService(event.target.value)}>
                   {services.map((service) => <option key={service.id} value={service.id}>{service.name}</option>)}
@@ -121,20 +118,21 @@ export default function BookingPopup({
                 </select>
               </label>
               <label className="block text-sm font-medium text-[#344239]">Pincode
-                <input className={fieldClass} inputMode="numeric" autoComplete="postal-code" maxLength={6} pattern="[0-9]{6}" placeholder="Enter 6-digit pincode" value={pincode} onChange={(event) => setPincode(event.target.value.replace(/\D/g, "").slice(0, 6))} required />
+                <input className={fieldClass} inputMode="numeric" autoComplete="postal-code" maxLength={6} pattern="[0-9]{6}" placeholder="6-digit pincode" value={pincode} onChange={(event) => setPincode(event.target.value.replace(/\D/g, "").slice(0, 6))} required />
               </label>
               <label className="block text-sm font-medium text-[#344239] sm:col-span-2">Phone number
                 <input className={fieldClass} type="tel" inputMode="tel" autoComplete="tel" placeholder="Your contact number" value={phone} onChange={(event) => setPhone(event.target.value)} required />
               </label>
               <label className="block text-sm font-medium text-[#344239] sm:col-span-2">Service address
-                <textarea className={`${fieldClass} min-h-24 resize-y`} autoComplete="street-address" placeholder="House or flat, street, area and landmark" value={address} onChange={(event) => setAddress(event.target.value)} required />
+                <textarea className={`${fieldClass} min-h-20 resize-y`} autoComplete="street-address" placeholder="House or flat, street, area and landmark" value={address} onChange={(event) => setAddress(event.target.value)} required />
               </label>
             </div>
 
-            <div className="flex flex-col-reverse gap-3 border-t border-[#e6e8e2] pt-5 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm text-[#68756d]">Starting at <span className="font-semibold text-[#263a31]">Rs. {selectedCategory.price}</span> · {selectedCategory.duration}</p>
-              <button type="submit" className="rounded-xl bg-[#133d32] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0c3027]">Continue</button>
+            <div className="flex flex-col gap-3 border-t border-[#e9ece7] pt-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-[#68756d]">From <span className="font-semibold text-[#263a31]">Rs. {selectedCategory.price}</span> <span aria-hidden="true">·</span> {selectedCategory.duration}</p>
+              <button type="submit" className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#133d32] px-6 text-sm font-semibold text-white transition hover:bg-[#0c3027]">Continue</button>
             </div>
+            <p className="text-xs leading-5 text-[#7b837d]">No payment is taken here. Any additional work or cost is confirmed with you before it begins.</p>
           </form>
         )}
       </section>

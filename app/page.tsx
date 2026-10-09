@@ -1,6 +1,8 @@
 import AccordionSection from "./compontens/AccordionSection";
+import BrandSupportSection from "./compontens/BrandSupportSection";
 import Footer from "./compontens/Footer";
 import Header from "./compontens/Header";
+import HomeCareGuideSection from "./compontens/HomeCareGuideSection";
 import HeroSection from "./compontens/HeroSection";
 import HowItWorksSection from "./compontens/HowItWorksSection";
 import HighlightsSection from "./compontens/HighlightsSection";
@@ -17,6 +19,8 @@ export default function Home() {
       <Header />
       <HeroSection />
       <ServicesSection />
+      <BrandSupportSection />
+      <HomeCareGuideSection />
       <HowItWorksSection />
       <IndustriesSection />
       <HighlightsSection

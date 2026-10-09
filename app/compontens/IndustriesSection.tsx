@@ -21,9 +21,9 @@ export default function IndustriesSection() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
           {industriesWeServe.map((industry) => (
-            <article key={industry.name} className="group relative aspect-square min-h-[230px] overflow-hidden rounded-[1.6rem] bg-[#dfe9e1] shadow-[0_8px_24px_rgba(20,38,31,.08)] ring-1 ring-inset ring-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(20,38,31,.16)] sm:min-h-[250px]">
+            <article key={industry.name} className="group relative aspect-[1.35/1] min-h-[180px] overflow-hidden rounded-2xl bg-[#dfe9e1] shadow-[0_6px_18px_rgba(20,38,31,.07)] ring-1 ring-inset ring-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(20,38,31,.14)] sm:min-h-[195px]">
               <Image
                 src={industry.image}
                 alt={industry.name}

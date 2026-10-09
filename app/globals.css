@@ -35,6 +35,31 @@ body {
 button, a { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid #35a982; outline-offset: 3px; }
 
+.brand-marquee-track {
+  animation: brand-marquee-left 34s linear infinite;
+  will-change: transform;
+}
+
+.brand-marquee-reverse {
+  animation-name: brand-marquee-right;
+  animation-duration: 40s;
+}
+
+.brand-marquee-forward {
+  animation-name: brand-marquee-left;
+  animation-duration: 36s;
+}
+
+@keyframes brand-marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes brand-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
 .loader {
   --color-1: #133d32;
   --color-2: #168365;
@@ -83,6 +108,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
   .loader, .loader::before, .loader::after { animation: none; }
+  .brand-marquee-track { animation: none; transform: none; width: 100%; flex-wrap: wrap; justify-content: center; }
+  .brand-marquee-track > div:nth-child(2) { display: none; }
 }
 
 a,
