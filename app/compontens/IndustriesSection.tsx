@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { industriesWeServe, SITE_IMAGE } from "./homeData";
-import UiIcon from "./UiIcon";
+import { industriesWeServe } from "../data/Industires.data";
 
 export default function IndustriesSection() {
   return (
@@ -18,33 +17,26 @@ export default function IndustriesSection() {
           <div className="rounded-2xl border border-[#dfe7df] bg-white p-5 sm:p-6 shadow-sm">
             <p className="text-sm font-semibold text-[#133d32]">Not sure what fits your property?</p>
             <p className="mt-2 text-sm leading-6 text-[#626a64]">Tell us about the space and the job. Our team can help you choose a suitable service option.</p>
-            <a href="tel:+911234567890" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#168365] hover:text-[#133d32]">Talk to our team <UiIcon name="arrow-right" /></a>
+            <a href="tel:+911234567890" className="mt-4 inline-flex text-sm font-semibold text-[#168365] hover:text-[#133d32]">Talk to our team</a>
           </div>
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
           {industriesWeServe.map((industry) => (
-            <article
-              key={industry.name}
-              className="overflow-hidden rounded-2xl border border-[#e8e7e2] bg-white shadow-[0_3px_12px_rgba(20,38,31,.05)] transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
-            >
-              <div className="relative aspect-[5/3] bg-[#f7f4ef]">
-                <Image
-                  src={SITE_IMAGE}
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 20vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-4 sm:p-5">
-                <h3 className="text-xl font-semibold">{industry.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-black/62">
-                  {industry.detail}
-                </p>
-                <p className="mt-5 rounded-md border border-black/10 px-3 py-2 text-sm font-semibold text-[#315c4c]">
-                  Ask about service options
-                </p>
+            <article key={industry.name} className="group relative aspect-square min-h-[230px] overflow-hidden rounded-[1.6rem] bg-[#dfe9e1] shadow-[0_8px_24px_rgba(20,38,31,.08)] ring-1 ring-inset ring-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(20,38,31,.16)] sm:min-h-[250px]">
+              <Image
+                src={industry.image}
+                alt={industry.name}
+                fill
+                sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, 50vw"
+                className="object-cover transition duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#10251e]/90 via-[#10251e]/15 to-transparent transition-colors duration-300 group-hover:from-[#10251e]/95" />
+              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                <span className="mb-3 block h-1 w-9 rounded-full bg-[#b9e7d1] transition-all duration-300 group-hover:w-14" />
+                <h3 className="max-w-[15rem] text-xl font-semibold leading-tight tracking-tight text-white sm:text-[1.35rem]">
+                  {industry.name}
+                </h3>
               </div>
             </article>
           ))}

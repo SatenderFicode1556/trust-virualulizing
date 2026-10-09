@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Button from "../../compontens/Button";
 import BookingPopup from "../../compontens/BookingPopup";
 import Footer from "../../compontens/Footer";
 import Header from "../../compontens/Header";
@@ -131,12 +130,12 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
                     <p className="mt-1 text-xs text-black/50">duration</p>
                   </div>
                 </div>
-                <Button
-                  href={`/services/${service.id}/${item.id}`}
-                  className="mt-5 block w-full rounded-full bg-[#133d32] py-3 text-center shadow-none transition hover:bg-[#0d3027]"
-                >
-                  Book this
-                </Button>
+                <BookingPopup
+                  initialServiceId={service.id}
+                  initialCategoryId={item.id}
+                  triggerLabel="Book this"
+                  triggerClassName="mt-5 w-full rounded-full py-3"
+                />
               </div>
             </article>
           ))}

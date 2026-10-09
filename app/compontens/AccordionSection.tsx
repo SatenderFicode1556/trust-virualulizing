@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { faqs } from "./homeData";
+import { faqs } from "../data/Faq.data";
 import UiIcon from "./UiIcon";
 
 export default function AccordionSection() {

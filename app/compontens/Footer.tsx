@@ -54,31 +54,30 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 export default function Footer() {
   return (
     <footer className="bg-[#12382f] text-white">
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-9 sm:px-8 sm:py-11 lg:grid-cols-[1.35fr_0.7fr_0.7fr_1fr] lg:gap-12 lg:px-12">
+      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-9 sm:px-8 sm:py-11 lg:grid-cols-[1.4fr_0.65fr_0.75fr_1fr] lg:gap-10 lg:px-12">
         <div>
           <Link href="/" className="inline-flex items-center gap-3 font-semibold tracking-tight">
             <span className="grid size-11 place-items-center rounded-2xl bg-[#b9e7d1] text-sm text-[#133d32]">TS</span>
             <span className="text-lg">Truston<span className="text-[#8fd4b0]">Services</span></span>
           </Link>
-          <p className="mt-4 max-w-md text-sm leading-6 text-white/68">
+          <p className="mt-4 max-w-lg text-sm leading-6 text-white/68">
             Explore home services, compare starting prices, and contact our team if you need help choosing an option.
-            Choose a service, review its options, then share your area and preferred visit time. Contact us to confirm availability and clarify what the listed price includes.
           </p>
 
-          <div className="mt-5 grid max-w-md gap-2 text-sm text-white/78 sm:grid-cols-3">
+          <ul className="mt-5 flex max-w-lg flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-white/75 sm:text-sm">
             {[
               ["Starting prices", "shown clearly"],
               ["Service options", "to compare"],
               ["Real support", "when you need it"],
             ].map(([title, detail]) => (
-              <div key={title} className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.05] p-3">
-                <UiIcon name="check" className="mt-0.5 size-4 shrink-0 text-[#8fd4b0]" />
-                <span><span className="block font-semibold text-white">{title}</span><span className="mt-0.5 block text-xs text-white/55">{detail}</span></span>
-              </div>
+              <li key={title} className="inline-flex items-center gap-1.5 whitespace-nowrap text-white/75">
+                <UiIcon name="check" className="size-3.5 shrink-0 text-[#8fd4b0]" />
+                <span><span className="font-semibold text-white">{title}</span> {detail}</span>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {socialLinks.map((item) => (
               <a key={item.label} href={item.href} target="_blank" rel="noreferrer" aria-label={`Visit TrustonServices on ${item.label}`} className="grid size-10 place-items-center rounded-xl border border-white/15 text-white/70 transition hover:border-[#8fd4b0] hover:bg-white/10 hover:text-white">
                 {item.icon}
